@@ -1,0 +1,69 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f70057960c4dc55f4faafd23dac22203",
+    "entities": [
+      {
+        "tableName": "personalEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idPer` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombrePer` TEXT, `lastNamePer` TEXT, `addresPer` TEXT, `inePer` TEXT, `telefonoPer` INTEGER NOT NULL, `puestoPer` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "idPer",
+            "columnName": "idPer",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "namePer",
+            "columnName": "nombrePer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastNamePer",
+            "columnName": "lastNamePer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "addresPer",
+            "columnName": "addresPer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "inePer",
+            "columnName": "inePer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "telefonoPer",
+            "columnName": "telefonoPer",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "puestoPer",
+            "columnName": "puestoPer",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idPer"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f70057960c4dc55f4faafd23dac22203\")"
+    ]
+  }
+}
