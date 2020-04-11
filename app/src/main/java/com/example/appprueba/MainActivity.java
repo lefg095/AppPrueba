@@ -17,14 +17,14 @@ import com.example.appprueba.database.AppDatabase;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recycler;
+
+    private static final int REQUEST_CODE_REGISTRO = 143;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertar);
-        recycler = findViewById(R.id.arvRvPersonal);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -34,7 +34,20 @@ public class MainActivity extends AppCompatActivity {
             actionbar.setIcon(R.mipmap.ic_launcher);
         }
 
+
+
+        //TODO Edgar: comento esto
+        /*List<Personal> personals = AppDatabase.getInstance(getApplicationContext()).personalDao().getAllPersonal();
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recycler.setAdapter(new PersonalAdapter(personals));*/
+
+        initRecyclerView(); //TODO Edgar: puso esta linea
+
+    }
+
+    private void initRecyclerView() { //TODO Edgar: Estuve aqui
         List<Personal> personals = AppDatabase.getInstance(getApplicationContext()).personalDao().getAllPersonal();
+        RecyclerView recycler = findViewById(R.id.arvRvPersonal);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recycler.setAdapter(new PersonalAdapter(personals));
     }
@@ -48,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_personal:
-                Intent intent=new Intent(this,registroPersonal.class);
-                startActivityForResult(intent, 2);// Activity is started with requestCode 2
+                Intent intent = new Intent(this, RegistroPersonalActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_REGISTRO);// Activity is started with requestCode 2 //TODO Edgar: Trata de utilizar constantes y no el valor directamente compa
                 //startActivity(new Intent(getApplicationContext(), registroPersonal.class));
                 return true;
             default:
@@ -57,14 +70,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 2
-        if(requestCode==2)
-        {
-            String message=data.getStringExtra("MESSAGE");
-            Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+        if (requestCode == REQUEST_CODE_REGISTRO && resultCode == RESULT_OK) { //TODO Edgar: Agregue un && para validar que el resultCode sea OK
+            initRecyclerView(); //TODO Edgar: Vuelvo a inicializar el recycler para cargar la lista esto cambialo por notifyDataSetChanged checalo en gugel
+            String message = data.getStringExtra("MESSAGE");
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
         }
     }

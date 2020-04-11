@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import butterknife.OnClick;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     CheckBox SharedPref;
     TextInputEditText userTi, passwordTi;
 
@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
         SharedPref = findViewById(R.id.checkCredentials);
         userTi = findViewById(R.id.inputUsuario);
         passwordTi = findViewById(R.id.passwordInput);
-        preferencesVerification();
+        preferencesVerification(); //TODO Edgar: Te falta validar que si le dan recordar los pase directo a MainActivity
     }
 
     private void preferencesVerification() {

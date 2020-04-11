@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registroPersonal">
+    tools:context=".RegistroPersonalActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
@@ -23,37 +26,40 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="328dp"
-        android:layout_height="647dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/NombreTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="324dp"
-            android:layout_height="79dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:hint="@string/nombre"
             app:boxStrokeColor="@color/colorPrimaryDark"
             app:counterEnabled="true"
             app:counterMaxLength="100"
             app:helperTextEnabled="true"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/ApellidoTextLayout"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.028"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="100"
                 android:background="@android:color/transparent"
                 android:inputType="text"
+                android:maxLength="100"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,16 +67,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ApellidoTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/apellido"
             app:counterEnabled="true"
             app:counterMaxLength="100"
             app:helperTextEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/NombreTextLayout"
+            app:layout_constraintStart_toStartOf="@+id/NombreTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/NombreTextLayout"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints">
@@ -79,9 +84,9 @@
                 android:id="@+id/itApellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="100"
                 android:background="@android:color/transparent"
                 android:inputType="text"
+                android:maxLength="100"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -89,27 +94,24 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/DirTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/direccion"
             app:counterEnabled="true"
             app:counterMaxLength="200"
             app:helperTextEnabled="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ApellidoTextLayout"
+            app:layout_constraintStart_toStartOf="@+id/ApellidoTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/ApellidoTextLayout"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itDir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="200"
                 android:background="@android:color/transparent"
                 android:inputType="text"
+                android:maxLength="200"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -117,27 +119,24 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/IneTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/ine"
             app:counterEnabled="true"
             app:counterMaxLength="13"
             app:helperTextEnabled="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/TelTextLayout"
+            app:layout_constraintStart_toStartOf="@+id/TelTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/TelTextLayout"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itIne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="13"
                 android:background="@android:color/transparent"
                 android:inputType="text"
+                android:maxLength="13"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -145,28 +144,25 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TelTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/telefono"
             app:counterEnabled="true"
             app:counterMaxLength="10"
             app:helperTextEnabled="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/DirTextLayout"
+            app:layout_constraintStart_toStartOf="@+id/DirTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/DirTextLayout"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itTel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="10"
                 android:background="@android:color/transparent"
                 android:digits="0123456789"
                 android:inputType="phone"
+                android:maxLength="10"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -174,36 +170,34 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/puestoTextLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="320dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/puesto"
             app:counterEnabled="true"
             app:counterMaxLength="80"
             app:helperTextEnabled="true"
-            app:layout_constraintBottom_toTopOf="@+id/btnSave"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/IneTextLayout"
+            app:layout_constraintStart_toStartOf="@+id/IneTextLayout"
             app:layout_constraintTop_toBottomOf="@+id/IneTextLayout"
-            app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/itPuesto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="80"
                 android:background="@android:color/transparent"
                 android:inputType="text"
+                android:maxLength="80"
                 android:singleLine="true"
                 android:textAlignment="center" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="314dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@color/orange"
             android:elevation="8dp"
@@ -214,6 +208,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/puestoTextLayout"
+            app:layout_constraintVertical_bias="0.90999997" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
