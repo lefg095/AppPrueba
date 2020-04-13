@@ -16,4 +16,5 @@
     <string name="nota_actualizada">Se actualizo correctamente el registro</string>
     <string name="crea_nota_primero">No ah escrito nada</string>
     <string name="new_personal">Agregar Personal</string>
+    <string name="str_menu">Menu</string>
 </resources>

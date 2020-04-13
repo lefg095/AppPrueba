@@ -40,6 +40,15 @@ public class LoginActivity extends AppCompatActivity {
         String password = preferences.getString("password", "");
         userTi.setText(user);
         passwordTi.setText(password);
+        if (!user.equals("") && !password.equals("")) {
+            String respuesta = validarAcceso();
+            //String respuesta ="";
+            if (respuesta.equals("")) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            } else {
+                Toast.makeText(this, respuesta, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @SuppressLint("ShowToast")
@@ -57,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     private void savePreferences() {
         SharedPreferences preferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
         String user = userTi.getText() != null ? userTi.getText().toString() : "";
-        String password = passwordTi.getText()!=null? passwordTi.getText().toString(): "";
+        String password = passwordTi.getText() != null ? passwordTi.getText().toString() : "";
 
         if (user.equals("")) {
             userTi.setError("Escribir Usuario");
@@ -74,12 +83,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public String validarAcceso() {
-        int users;
+        int users = 0;
         String user = userTi.getText() != null ? userTi.getText().toString() : "";
-        String password = passwordTi.getText()!=null? passwordTi.getText().toString(): "";
+        String password = passwordTi.getText() != null ? passwordTi.getText().toString() : "";
 
         if (user.equals("admin") && password.equals("admin")) {
             users = 1;
+        } else if (user.equals("")) {
+            userTi.setError("Escribir Usuario");
+            userTi.requestFocus();
+        } else if (password.equals("")) {
+            passwordTi.setError("Escribir Contraseña");
+            passwordTi.requestFocus();
         } else {
             users = AppDatabase.getInstance(getApplicationContext()).personalDao().loadUser(user, Long.parseLong(password));
         }

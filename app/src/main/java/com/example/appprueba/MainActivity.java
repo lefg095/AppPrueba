@@ -1,7 +1,9 @@
 package com.example.appprueba;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menubar, menu);
+        inflater.inflate(R.menu.menu_options, menu);
         return true;
     }
 
@@ -64,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, RegistroPersonalActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_REGISTRO);// Activity is started with requestCode 2 //TODO Edgar: Trata de utilizar constantes y no el valor directamente compa
                 //startActivity(new Intent(getApplicationContext(), registroPersonal.class));
+                return true;
+            case R.id.cerrar_sesion_item:
+                SharedPreferences preferences = getSharedPreferences("credentials", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("user", "");
+                editor.putString("password", "");
+                editor.apply();
+                Intent intent1=new Intent(this, LoginActivity.class);
+                startActivityForResult(intent1, REQUEST_CODE_REGISTRO);;
+                //Toast.makeText(this,"salienid...",Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
